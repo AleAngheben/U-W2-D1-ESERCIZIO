@@ -11,11 +11,6 @@ export class ActivePostsComponent implements OnInit {
   posts: Post[] = [];
   constructor(private srv: ServiceService) {
     this.srv.getPosts().then((obj) => {
-      // obj.forEach((e: any) => {
-      //   if (e.active) {
-      //     this.post.push(e);
-      //   }
-      // });
       this.posts = obj;
       console.log(this.posts);
     });
