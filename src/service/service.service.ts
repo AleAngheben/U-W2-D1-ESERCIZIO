@@ -5,11 +5,13 @@ import { Post } from 'src/app/models/post';
   providedIn: 'root',
 })
 export class ServiceService {
+  [x: string]: any;
   posts: Post[] = [];
   constructor() {}
 
   async getPosts() {
     const result = await (await fetch('../../assets/db.json')).json();
+    return result;
   }
 
   async updatePosts(postIndex: number, post: any) {
