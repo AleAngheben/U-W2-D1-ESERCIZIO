@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ServiceService } from 'src/service/service.service';
 import { Post } from '../models/post';
 
@@ -15,6 +15,14 @@ export class ActivePostsComponent implements OnInit {
       console.log(this.posts);
     });
   }
+
+  callUpdate(i: number) {
+    this.srv.updatePosts(i);
+  }
+
+  // ngOnChanges(): any {
+  //   this.srv.newPosts();
+  // }
 
   ngOnInit(): void {}
 }

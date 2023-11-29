@@ -1,6 +1,14 @@
-<div *ngFor="let post of posts">
+<div *ngFor="let post of posts; let i = index">
   <div *ngIf="!post.active">
-    <div class="card" id="post">
+    <div
+      class="card"
+      id="post"
+      [ngClass]="{
+        'text-bg-warning': post.type === 'news',
+        'text-bg-dark': post.type === 'politic',
+        'text-bg-primary': post.type === 'education'
+      }"
+    >
       <div class="card-header">POST {{ post.id }}</div>
       <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
@@ -8,6 +16,7 @@
           {{ post.body }}
         </p>
       </div>
+      <button (click)="callUpdate(i)">Attiva</button>
     </div>
   </div>
 </div>
