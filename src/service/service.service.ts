@@ -10,16 +10,9 @@ export class ServiceService {
 
   async getPosts() {
     const result = await (await fetch('../../assets/db.json')).json();
-    this.posts = result;
-    return result;
   }
 
-  async updatePosts(postIndex: number) {
-    this.posts[postIndex].active = !this.posts[postIndex].active;
+  async updatePosts(postIndex: number, post: any) {
+    post[postIndex].active = !post[postIndex].active;
   }
-
-  // newPosts() {
-  //   const updatePost = this.posts;
-  //   return updatePost;
-  // }
 }

@@ -9,20 +9,17 @@ import { Post } from '../models/post';
 })
 export class ActivePostsComponent implements OnInit {
   posts: Post[] = [];
-  constructor(private srv: ServiceService) {
-    this.srv.getPosts().then((obj) => {
+
+  constructor(private srv: ServiceService) {}
+
+  ngOnInit(): void {
+    this.srv.getPosts().then((obj: any) => {
       this.posts = obj;
       console.log(this.posts);
     });
   }
 
   callUpdate(i: number) {
-    this.srv.updatePosts(i);
+    this.srv.updatePosts(i, this.posts);
   }
-
-  // ngOnChanges(): any {
-  //   this.srv.newPosts();
-  // }
-
-  ngOnInit(): void {}
 }

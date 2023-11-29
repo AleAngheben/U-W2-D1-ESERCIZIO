@@ -9,7 +9,10 @@ import { ServiceService } from 'src/service/service.service';
 })
 export class InactivePostsComponent implements OnInit {
   posts: Post[] = [];
-  constructor(private serv: ServiceService) {
+
+  constructor(private serv: ServiceService) {}
+
+  ngOnInit(): void {
     this.serv.getPosts().then((obj: any) => {
       this.posts = obj;
       console.log(this.posts);
@@ -17,10 +20,8 @@ export class InactivePostsComponent implements OnInit {
   }
 
   callUpdate(i: number) {
-    this.serv.updatePosts(i);
+    this.serv.updatePosts(i, this.posts);
   }
-
-  ngOnInit(): void {}
 
   // ngOnChanges(): any {
   //   this.serv.newPosts();
